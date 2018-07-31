@@ -33,7 +33,7 @@ public class cucumberJava {
 
     //public WebDriverWait wait ;
 
-    AppiumDriverLocalService appiumService;
+   // AppiumDriverLocalService appiumService;
     String appiumServiceUrl;
     String size;
 
@@ -43,23 +43,24 @@ public class cucumberJava {
     public void openDevices(){
 
 
-        appiumService = AppiumDriverLocalService.buildDefaultService();
-        appiumService.start();
-        appiumServiceUrl = appiumService.getUrl().toString();
-        System.out.println("Appium Service Address : - "+ appiumServiceUrl);
+     //   appiumService = AppiumDriverLocalService.buildDefaultService();
+     //   appiumService.start();
+     //   appiumServiceUrl = appiumService.getUrl().toString();
+     //   System.out.println("Appium Service Address : - "+ appiumServiceUrl);
 
 
         DesiredCapabilities capabilities = new DesiredCapabilities();
 
-        capabilities.setCapability("deviceName","IPad Air2");
-        //desiredCapabilities.setCapability("deviceName","iPhone 5s");
-        capabilities.setCapability("udid","07436359a6f86dce57b77a0b941b92d6975e3480");
-        //desiredCapabilities.setCapability("udid","6fadb40a2c706858513f78280f686692d9f1b625");
+        //capabilities.setCapability("deviceName","IPad Air2");
+        capabilities.setCapability("deviceName","iPhone 6s");
+        //capabilities.setCapability("udid","07436359a6f86dce57b77a0b941b92d6975e3480");
+        capabilities.setCapability("udid","8b56547b24cc5a94c9d74b4c4ceaf4c3a24da2fa");
 
         //desiredCapabilities.setCapability("udid","2E611BE3-7495-4BFE-A288-EB24BFC828CC");
         //capabilities.setCapability("autoWebview", "true");
 
-        capabilities.setCapability("platformVersion","10.2.1");
+        //capabilities.setCapability("platformVersion","10.2.1");
+        capabilities.setCapability("platformVersion","11.2.6");
         //capabilities.setCapability("appiumVersion","v1.6.0");
         capabilities.setCapability("platformName","iOS");
         //desiredCapabilities.setCapability("orientation","LANDSCAPE");
@@ -69,14 +70,17 @@ public class cucumberJava {
         //desiredCapabilities.setCapability("automationName","UIautomation");
         //requiredcapabilities.setCapability(MobileCapabilityType.PLATFORM_NAME, MobilePlatform.iOS);
         //requiredcapabilities.setCapability(MobileCapabilityType.DEVICE_NAME, "Innpad Air2 Device");
-        capabilities.setCapability("app","/Users/appium/Documents/AppiumDemo.ipa");
-        capabilities.setCapability("realDeviceLogger","/usr/local/lib/node_modules/deviceconsole/deviceconsole");
+        //capabilities.setCapability("app","/Users/appium/Documents/AppiumDemo.ipa");
+        capabilities.setCapability("app","/opt/AppiumDemoViper.ipa");
+        capabilities.setCapability("appPackage", "com.ibermatica.appiumdemoviper");
+        capabilities.setCapability("appActivity", "com.ibermatica.appiumdemoviper.MainActivity");
+        //capabilities.setCapability("realDeviceLogger","/usr/local/lib/node_modules/deviceconsole/deviceconsole");
 
         try{
 
-            driver = new IOSDriver(new URL(appiumServiceUrl), capabilities);
+          //  driver = new IOSDriver(new URL(appiumServiceUrl), capabilities);
 
-         //   driver = new IOSDriver<WebElement>(new URL("http://0.0.0.0:4723/wd/hub"),capabilities);
+            driver = new IOSDriver<WebElement>(new URL("http://172.17.0.3:4723/wd/hub"),capabilities);
 
 
           driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
@@ -162,7 +166,7 @@ public class cucumberJava {
         System.out.println("Compruebo que cambio de version en GitHub3");
         driver.quit();
         System.out.println("Stop appium service");
-        appiumService.stop();
+     //   appiumService.stop();
 
 
 
@@ -187,7 +191,7 @@ public class cucumberJava {
         System.out.println("Stop driver");
         driver.quit();
         System.out.println("Stop appium service");
-        appiumService.stop();
+     //   appiumService.stop();
 
     }
 
@@ -295,7 +299,7 @@ public class cucumberJava {
         System.out.println("Stop driver");
         driver.quit();
         System.out.println("Stop appium service");
-        appiumService.stop();
+     //   appiumService.stop();
     }
 
 
@@ -316,7 +320,7 @@ public class cucumberJava {
         System.out.println("Stop driver");
         driver.quit();
         System.out.println("Stop appium service");
-        appiumService.stop();
+    //    appiumService.stop();
 
 
     }
@@ -338,7 +342,7 @@ public class cucumberJava {
         System.out.println("Stop driver");
         driver.quit();
         System.out.println("Stop appium service");
-        appiumService.stop();
+   //     appiumService.stop();
 
 
     }
